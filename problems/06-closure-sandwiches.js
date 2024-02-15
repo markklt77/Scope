@@ -17,7 +17,13 @@ sandwich2("pb") // => "One sandwich with tomato and pb"
 
 ***********************************************************************/
 
-// Your code here 
+let sandwichMaker = function() {
+  let string = 'One sandwich with tomato';
+  return function (str) {
+    string = string + ' and ' + str;
+    return string;
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 

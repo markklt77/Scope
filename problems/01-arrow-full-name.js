@@ -14,7 +14,8 @@ arrowGetFullName(p2); // => 'Charlie Brown'
 
 ***********************************************************************/
 
-// Your code here 
+let arrowGetFullName = obj => obj['firstName'] + ' ' + obj['lastName'];
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
