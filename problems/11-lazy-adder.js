@@ -22,7 +22,18 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
   fat-arrow function
 ***********************************************************************/
 
-// Your code here 
+let lazyAdder = function(n) {
+  let count = 1;
+  let sum = n;
+  return function summer(num) {
+    count++;
+    sum += num;
+    if (count === 3){
+      return sum;
+    }
+    return summer;
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 

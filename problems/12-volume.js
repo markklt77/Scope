@@ -13,8 +13,22 @@ function returned by recVolume should continue to return the original volume.
 
 ***********************************************************************/
 
-// Your code here 
-
+let recVolume = function (num) {
+  let count = 2;
+  let answer = num;
+  return function next(n) {
+   count --;
+   if (count === 1){
+      answer *= n;
+      return next;
+   }else if (count === 0){
+    answer *= n;
+    return answer;
+   }else if (count < 0) {
+    return answer;
+   }
+  }
+}
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
 try {
