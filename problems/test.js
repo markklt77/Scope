@@ -76,24 +76,39 @@
 //   console.log(threeDays()); // prints "Happy New Year!"
 
 
-let recVolume = function (num) {
-    let count = 2;
-    let answer = num;
-    return function next(n) {
-     count --;
-     if (count === 1){
-        answer *= n;
-        return next;
-     }else if (count === 0){
-        answer *= n;
-        return answer;
-     }else if (count < 0) {
-      return answer;
-     }
+// let recVolume = function (num) {
+//     let count = 2;
+//     let answer = num;
+//     return function next(n) {
+//      count --;
+//      if (count === 1){
+//         answer *= n;
+//         return next;
+//      }else if (count === 0){
+//         answer *= n;
+//         return answer;
+//      }else if (count < 0) {
+//       return answer;
+//      }
+//     }
+//   }
+
+// let second = recVolume(5);
+// let third = second(4);
+// console.log(third(3));
+// console.log(third(4));
+
+let smoothieMachine = function (...smooth) {
+    return function (... rough){
+      let arr = [...smooth, ...rough];
+      let newArr = [arr[0]];
+      for (let i = 1; i < arr.length; i++){
+        newArr.push('and');
+        newArr.push(arr[i]);
+      }
+      return "I'm having a smoothie with " + newArr.join(' ');
     }
   }
 
-let second = recVolume(5);
-let third = second(4);
-console.log(third(3));
-console.log(third(4));
+let incident = smoothieMachine('milk');
+console.log(incident('kale', 'spinach'));

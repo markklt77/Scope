@@ -22,7 +22,12 @@ console.log(smoothie2("pineapple"));
 // prints "I'm having a smoothie with apples and bananas and berries and pineapple"
 ***********************************************************************/
 
-// Your code here 
+let smoothieMachine = function (...smooth) {
+  return function (... rough) {
+
+  }
+}
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
