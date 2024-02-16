@@ -99,16 +99,21 @@
 // console.log(third(4));
 
 let smoothieMachine = function (...smooth) {
-    return function (... rough){
-      let arr = [...smooth, ...rough];
-      let newArr = [arr[0]];
-      for (let i = 1; i < arr.length; i++){
-        newArr.push('and');
-        newArr.push(arr[i]);
-      }
-      return "I'm having a smoothie with " + newArr.join(' ');
+  let ingredients = [...smooth];
+  return function (...rough) {
+    ingredients = ingredients.concat(rough);
+    let length = ingredients.length ;
+    let arr = [...ingredients];
+    for (let i = 1; i < length; i++) {
+      arr.splice(i * 2 - 1, 0, 'and')
+    }
+    console.log(ingredients);
+    return "I'm having a smoothie with " + arr.join(' ');
     }
   }
+//let incident = smoothieMachine('milk');
 
-let incident = smoothieMachine('milk');
+let incident = smoothieMachine();
+console.log(incident('milk'));
 console.log(incident('kale', 'spinach'));
+console.log(incident("honey", "pears", "berries"));

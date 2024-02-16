@@ -23,11 +23,18 @@ console.log(smoothie2("pineapple"));
 ***********************************************************************/
 
 let smoothieMachine = function (...smooth) {
-  return function (... rough) {
-
+  let ingredients = [...smooth];
+  return function (...rough) {
+    ingredients = ingredients.concat(rough);
+    let length = ingredients.length ;
+    let arr = [...ingredients];
+    for (let i = 1; i < length; i++) {
+      arr.splice(i * 2 - 1, 0, 'and')
+    }
+    console.log(ingredients);
+    return "I'm having a smoothie with " + arr.join(' ');
+    }
   }
-}
-
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
