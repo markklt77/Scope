@@ -118,27 +118,54 @@
 // console.log(incident('kale', 'spinach'));
 // console.log(incident("honey", "pears", "berries"));
 
-let plannedIntersect = function(firstArr) {
-  let first = firstArr;
-  let longest;
-  let shorter;
-  return function (secondArr) {
-  let common = [];
-  if (first.length > secondArr.length) {
-    longest = first;
-    shorter = secondArr;
-  } else {
-    longest = secondArr;
-    shorter = first;
-  }
-  longest.forEach(el => {
-    if (shorter.indexOf(el) > -1) {
-      common.push(el);
+// let plannedIntersect = function(firstArr) {
+//   let first = firstArr;
+//   let longest;
+//   let shorter;
+//   return function (secondArr) {
+//   let common = [];
+//   if (first.length > secondArr.length) {
+//     longest = first;
+//     shorter = secondArr;
+//   } else {
+//     longest = secondArr;
+//     shorter = first;
+//   }
+//   longest.forEach(el => {
+//     if (shorter.indexOf(el) > -1) {
+//       common.push(el);
+//     }
+//   })
+//   return common;
+//   }
+// }
+
+// let bum = plannedIntersect(["a", "b", "c"]);
+// console.log(bum(["b", "d", "c"]));
+
+
+let curriedSum = function(num) {
+  let arr = [];
+  return function add (n) {
+    let sum = 0;
+    if (n > 0){
+      arr.push(n)
+    }else{
+      arr.push(0);
+      return null;
     }
-  })
-  return common;
+    if (arr.length != num) {
+      return add;
+    } else {
+      arr.forEach(el => {
+        sum += el;
+      })
+      return sum;
+    }
   }
 }
 
-let bum = plannedIntersect(["a", "b", "c"]);
-console.log(bum(["b", "d", "c"]));
+//const sum = console.log(curriedSum(3)(-2)(1)(7)); // => returns 10
+let sum = curriedSum(2);
+console.log(sum(0));
+console.log(sum(-1));

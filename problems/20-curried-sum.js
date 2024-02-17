@@ -43,7 +43,30 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
   be useful
 ***********************************************************************/
 
-// Your code here 
+let curriedSum = function(num) {
+  if (num <= 0) {
+    return null;
+  }
+  let arr = [];
+  return function add (n) {
+    let sum = 0;
+    if (n > 0){
+      arr.push(n)
+    }else{
+      arr.push(0);
+      return null;
+    }
+    if (arr.length != num) {
+      return add;
+    } else {
+      arr.forEach(el => {
+        sum += el;
+      })
+      return sum;
+    }
+  }
+}
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
