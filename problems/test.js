@@ -98,22 +98,47 @@
 // console.log(third(3));
 // console.log(third(4));
 
-let smoothieMachine = function (...smooth) {
-  let ingredients = [...smooth];
-  return function (...rough) {
-    ingredients = ingredients.concat(rough);
-    let length = ingredients.length ;
-    let arr = [...ingredients];
-    for (let i = 1; i < length; i++) {
-      arr.splice(i * 2 - 1, 0, 'and')
-    }
-    console.log(ingredients);
-    return "I'm having a smoothie with " + arr.join(' ');
-    }
-  }
-//let incident = smoothieMachine('milk');
+// let smoothieMachine = function (...smooth) {
+//   let ingredients = [...smooth];
+//   return function (...rough) {
+//     ingredients = ingredients.concat(rough);
+//     let length = ingredients.length ;
+//     let arr = [...ingredients];
+//     for (let i = 1; i < length; i++) {
+//       arr.splice(i * 2 - 1, 0, 'and')
+//     }
+//     console.log(ingredients);
+//     return "I'm having a smoothie with " + arr.join(' ');
+//     }
+//   }
+// //let incident = smoothieMachine('milk');
 
-let incident = smoothieMachine();
-console.log(incident('milk'));
-console.log(incident('kale', 'spinach'));
-console.log(incident("honey", "pears", "berries"));
+// let incident = smoothieMachine();
+// console.log(incident('milk'));
+// console.log(incident('kale', 'spinach'));
+// console.log(incident("honey", "pears", "berries"));
+
+let plannedIntersect = function(firstArr) {
+  let first = firstArr;
+  let longest;
+  let shorter;
+  return function (secondArr) {
+  let common = [];
+  if (first.length > secondArr.length) {
+    longest = first;
+    shorter = secondArr;
+  } else {
+    longest = secondArr;
+    shorter = first;
+  }
+  longest.forEach(el => {
+    if (shorter.indexOf(el) > -1) {
+      common.push(el);
+    }
+  })
+  return common;
+  }
+}
+
+let bum = plannedIntersect(["a", "b", "c"]);
+console.log(bum(["b", "d", "c"]));

@@ -15,7 +15,27 @@ console.log(fame(["a", "f", "z", "b"])); // returns [ 'f', 'a' ]
 
 *******************************************************************************/
 
-// Your code here 
+let plannedIntersect = function(firstArr) {
+  let first = firstArr;
+  let longest;
+  let shorter;
+  return function (secondArr) {
+  let common = [];
+  if (first.length > secondArr.length) {
+    longest = first;
+    shorter = secondArr;
+  } else {
+    longest = secondArr;
+    shorter = first;
+  }
+  longest.forEach(el => {
+    if (shorter.indexOf(el) > -1) {
+      common.push(el);
+    }
+  })
+  return common;
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*************************/
 
